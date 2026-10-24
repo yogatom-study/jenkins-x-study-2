@@ -1,0 +1,17 @@
+environments:
+  default:
+    values:
+    - jx-values.yaml
+---
+namespace: nginx
+repositories:
+- name: ingress-nginx-oci
+  url: registry.k8s.io/ingress-nginx/charts
+  oci: true
+releases:
+- chart: ingress-nginx-oci/ingress-nginx
+  version: v4.15.1
+  name: nginx-ingress
+  values:
+  - jx-values.yaml
+  - ../../versionStream/charts/ingress-nginx-oci/ingress-nginx/values.yaml.gotmpl
